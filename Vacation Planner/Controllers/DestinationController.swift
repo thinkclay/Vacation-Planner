@@ -2,12 +2,12 @@ import Foundation
 import SwiftUI
 import RealmSwift
 
-class DestinationObserver: ObservableObject {
+class DestinationController: ObservableObject {
 	@Published var destinations = [HTBDestination]()
 	@Published var total = 0
 	@Published var groupedByState: Dictionary<String, [HTBDestination]> = [:]
 	
-	private var storeCount = try! Realm().objects(HTBDestination.self).count
+	private var records = 0
 	private var cursor = 0
 	private var maxCursor = 1
 	
@@ -29,8 +29,9 @@ class DestinationObserver: ObservableObject {
 	func refreshState() {
 		let realm = try! Realm()
 		let records = Array(realm.objects(HTBDestination.self))
-		destinations = records
-		total = records.count
+		self.destinations = records
+		self.total = records.count
+		self.records = records.count
 	}
 	
 	func fetchNext() {
@@ -54,6 +55,11 @@ class DestinationObserver: ObservableObject {
 				return
 			}
 			
+			if (self.records == resource.total) {
+				Debug.log(ident: "DestinationController.fetchNext()", data: "API and local storage match. Skipping additional requests.")
+				return
+			}
+			
 			if (self.cursor == 0) {
 				self.total = resource.total
 				self.maxCursor = Int(ceil(Double(resource.total) / 100.0))
@@ -63,30 +69,62 @@ class DestinationObserver: ObservableObject {
 			
 			Debug.log(ident: "Request Destinations", data: "cursor: \(self.cursor), max: \(self.maxCursor), from: \(from), to: \(to)")
 			
-			DispatchQueue(label: "app.controllers.destinations.batchWrite").async {
-				let realm = try! Realm()
+			DispatchQueue(label: "app.controllers.destinations.fetch").async {
+				var destinations: [HTBDestination] = []
 				for destination in resource.destinations {
-					try! realm.write {
-						destination.title = destination.rawName.content
+					destination.title = destination.rawName.content
+					destination.zones = destination.rawZones.map { $0.name }.joined(separator: ",")
+					
+					if destination.countryCode == "US" {
+						let parts = destination.title.split(separator: "-").map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
 						
-						if destination.countryCode == "US" {
-							let parts = destination.title.split(separator: "-")
-							if parts.count == 2 {
-								destination.title = parts[0].trimmingCharacters(in: .whitespacesAndNewlines)
-								destination.state = parts[1].trimmingCharacters(in: .whitespacesAndNewlines)
-							}
+						if parts.count == 2 {
+							destination.title = parts[0]
+							destination.state = parts[1]
+							destination.address = "\(parts[0]), \(parts[1])"
 						}
-						
-						destination.zones = destination.rawZones.map { $0.name }.joined(separator: ",")
-						realm.add(destination, update: .modified)
 					}
+					
+					destinations.append(destination)
+				}
+				
+				let realm = try! Realm()
+				try! realm.write {
+					realm.add(destinations, update: .modified)
 				}
 			}
 			
-			if self.total < self.storeCount {
+			
+			Debug.log(ident: "Destinations loop: ", data: "Total: \(self.total), Records: \(self.records)")
+			if self.total > self.records {
 				self.fetchNext()
 			}
 		}
+	}
+	
+	static func geocode(destination: HTBDestination) {
+		guard destination.latitude == 0 else {
+			Debug.log(ident: "No need to geocode", data: "")
+			return
+		}
+		
+		Location.getCoordinate(address: destination.address) { location, error in
+			guard error == nil else {
+				Debug.log(ident: "Error in DestinationController.geocode()", data: error!)
+				return
+			}
+			
+			let realm = try! Realm()
+			if let destination = realm.object(ofType: HTBDestination.self, forPrimaryKey: destination.code) {
+				try! realm.write {
+					destination.latitude = location.latitude
+					destination.longitude = location.longitude
+				}
+				
+				Debug.log(ident: "Geocoded", data: destination)
+			}
+		}
+		
 	}
 }
 

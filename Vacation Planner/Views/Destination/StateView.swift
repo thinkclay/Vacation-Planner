@@ -1,15 +1,14 @@
 import SwiftUI
 
-struct DestinationView: View {
+struct StateView: View {
 	
-	@ObservedObject var destinationsObserver = DestinationObserver()
+	@ObservedObject var destinations = DestinationController()
 	
 	@State var searchText: String =  ""
 	
 	var body: some View {
-		VStack  {
+		VStack {
 			VStack {
-				Text("\(destinationsObserver.total) destinations")
 				TextField("Search...", text: $searchText)
 					.padding(.horizontal, 10)
 					.padding(.vertical, 10)
@@ -22,26 +21,28 @@ struct DestinationView: View {
 			ScrollView {
 				ForEach(Countries.US.states.map { $0.key }.sorted(), id: \.self) { state in
 					VStack(alignment: .leading) {
-						DestinationsCardView(
-							state: Countries.US.states[state] ?? "",
-							code: state,
-							destinations: self.destinationsObserver.byState(code: state)
+						StateCardView(
+							stateLabel: Countries.US.states[state] ?? "",
+							stateCode: state
 						)
 					}
 				}
 			}
 			.frame(minWidth: 0, maxWidth: .infinity)
+			.navigationBarTitle(Text("\(destinations.total) destinations"), displayMode: .inline)
 		}
+		
 	}
+	
 	
 	func searchHandler(searchText: Binding<String>) {
 		debugPrint(searchText)
 	}
 }
 
-struct DestinationView_Previews: PreviewProvider {
+struct StateView_Previews: PreviewProvider {
 	static var previews: some View {
-		DestinationView()
+		StateView()
 	}
 }
 

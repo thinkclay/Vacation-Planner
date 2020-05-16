@@ -7,9 +7,7 @@ struct AuthView: View {
 	@State var password: String = "9Fw2SXnUfePiEFQ"
 	
 	var body: some View {
-		VStack(alignment: .leading) {
-			Text("Login").font(.headline)
-			
+		VStack(alignment: .leading) {			
 			if authResponse != nil && authResponse?.errors != nil {
 				ForEach(authResponse?.errors ?? [], id: \.self) {
 					Text("\($0)")
@@ -36,6 +34,7 @@ struct AuthView: View {
 			}
 			.padding(.top, 15)
 		}
+		.navigationBarTitle(Text("Login"), displayMode: .inline)
 		.padding(.horizontal, 20)
 	}
 	

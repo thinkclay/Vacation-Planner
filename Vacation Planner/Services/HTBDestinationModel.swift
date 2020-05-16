@@ -17,6 +17,9 @@ class HTBDestination: Object, Codable, Identifiable {
 	dynamic var code: String
 	dynamic var countryCode, isoCode: String
 	dynamic var title: String = ""
+	dynamic var address: String = ""
+	dynamic var latitude: Double = 0.0
+	dynamic var longitude: Double = 0.0
 	dynamic var state: String = ""
 	dynamic var zones = ""
 	

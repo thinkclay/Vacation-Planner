@@ -13,7 +13,7 @@ struct APIHelper {
 		components.queryItems = params.map { URLQueryItem(name: $0, value: "\($1)") }
 		
 		if method == .get {
-			requestUrl = try! components.asURL()
+			requestUrl = components.url!
 		}
 			
 		var request = URLRequest(url: requestUrl)
@@ -276,40 +276,3 @@ class JSONAny: Codable {
 		}
 	}
 }
-
-
-
-//struct APIHelper {
-//	enum method: String {
-//		case get = "GET"
-//		case post = "POST"
-//	}
-//
-//	public static func buildRequest(url: String, params: [String: Any], method: method = .get, headers: [String: String] = [:], handler: @escaping (Data?, URLResponse?, Error?) -> Void) {
-//		let url: URL = URL(string: url)!
-//		var components: URLComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)!
-//		if method != .get {
-//
-//			return URLSession.shared.dataTask(with: URLRequest(url: try! components.asURL()), completionHandler: handler).resume()
-//		}
-//		var request = URLRequest(url: url)
-//
-//
-//		components.queryItems = params.map { URLQueryItem(name: $0, value: "\($1)") }
-//		request.httpMethod = method.rawValue
-//		request.httpBody = Data(components.url!.query!.utf8)
-//
-//		for (key, value) in headers {
-//			request.addValue(value, forHTTPHeaderField: key)
-//		}
-//
-//
-//
-//		Debug.log(ident: "API Request", data: try! components.asURL())
-//
-//
-//
-//		return URLSession.shared.dataTask(with: request, completionHandler: handler).resume()
-//	}
-//}
-//

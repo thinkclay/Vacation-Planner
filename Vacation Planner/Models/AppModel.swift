@@ -57,7 +57,7 @@ class AppState: ObservableObject {
 		// Use the default directory, but replace the filename with the username
 		config.fileURL = config.fileURL!.deletingLastPathComponent().appendingPathComponent("appV\(version).realm")
 		
-		Debug.log(ident: "Realm Location", data: Realm.Configuration.defaultConfiguration.fileURL)
+		Debug.log(ident: "Realm Location", data: Realm.Configuration.defaultConfiguration.fileURL!)
 		
 		// Set this as the configuration used for the default Realm
 		Realm.Configuration.defaultConfiguration = config

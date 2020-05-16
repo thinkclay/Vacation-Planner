@@ -1,16 +1,11 @@
 import UIKit
 import CoreData
-import Bagel
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 	
-	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-		#if DEBUG
-		Bagel.start()
-		#endif
-		
-		AppState.setDefaultRealm(version: "0.6")
+	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {		
+		AppState.setDefaultRealm(version: "0.9")
 		
 		return true
 	}
