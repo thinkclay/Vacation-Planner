@@ -7,7 +7,7 @@ struct OnboardingSlideView: View {
 	
 	var body: some View {
 		VStack {
-			LottieView(name: slide.image, play: $play).frame(width:200, height:200)
+			NeueLottieView(name: slide.image, play: $play).frame(width:200, height:200)
 			Text(slide.title).font(.headline)
 			Text(slide.body).font(.body)
 		}

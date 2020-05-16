@@ -36,7 +36,6 @@ struct OnboardingView: View {
 	
 	func nextHandler() {
 		if (self.current + 1 == self.subviews.count) {
-			UserDefaults.standard.set(true, forKey: Constants.UserDefaults.isUser)
 			self.appState.isUser = true
 			self.appState.currentPage = .auth
 		}

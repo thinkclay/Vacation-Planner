@@ -17,6 +17,7 @@ class HTBDestination: Object, Codable, Identifiable {
 	dynamic var code: String
 	dynamic var countryCode, isoCode: String
 	dynamic var title: String = ""
+	dynamic var state: String = ""
 	dynamic var zones = ""
 	
 	let rawName: HTBName

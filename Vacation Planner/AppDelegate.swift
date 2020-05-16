@@ -10,7 +10,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		Bagel.start()
 		#endif
 		
-		AppState.setDefaultRealm(version: "0.3")
+		AppState.setDefaultRealm(version: "0.6")
 		
 		return true
 	}

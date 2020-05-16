@@ -8,6 +8,7 @@ struct AuthModel {
 	}
 	
 	static func setSession(token: String?) -> Void {
+		UserDefaults.standard.set(true, forKey: Constants.UserDefaults.isUser)
 		UserDefaults.standard.set(token, forKey: Constants.UserDefaults.vocSessionToken)
 	}
 }
