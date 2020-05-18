@@ -4,23 +4,30 @@ extension UINavigationController {
 	override open func viewDidLoad() {
 		super.viewDidLoad()
 		
-		let standard = UINavigationBarAppearance()
-		standard.backgroundColor = UIColor(named: "Neutral300")
+		let navigation = UINavigationBarAppearance()
+		navigation.backgroundColor = UIColor(named: "Neutral300")
+		navigation.titleTextAttributes = [
+			.foregroundColor: UIColor.white
+		]
 		
-		let compact = UINavigationBarAppearance()
-		compact.backgroundColor = UIColor(named: "Neutral300")
+//		let backButton = UIBarButtonItemAppearance()
+//		navigation.backButtonAppearance = backButton
 		
-		let scrollEdge = UINavigationBarAppearance()
-		scrollEdge.backgroundColor = UIColor(named: "Neutral300")
-		
-		navigationBar.standardAppearance = standard
-		navigationBar.compactAppearance = compact
-		navigationBar.scrollEdgeAppearance = scrollEdge
+		navigationBar.standardAppearance = navigation
+		navigationBar.compactAppearance = navigation
+		navigationBar.scrollEdgeAppearance = navigation
 	}
 }
 
 struct RootView: View {
 	@ObservedObject var appState: AppState
+	
+	init() {
+		appState = AppState()
+		
+		UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+		UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.red]
+	}
 	
 	var body: some View {
 		NavigationView {
@@ -38,12 +45,13 @@ struct RootView: View {
 				}
 			}
 		}
+		.accentColor(Color.white)
 	}
 }
 
 struct RootView_Previews: PreviewProvider {
 	static var previews: some View {
-		RootView(appState: AppState())
+		RootView()
 	}
 }
 

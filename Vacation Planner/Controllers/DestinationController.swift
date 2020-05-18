@@ -104,7 +104,6 @@ class DestinationController: ObservableObject {
 	
 	static func geocode(destination: HTBDestination) {
 		guard destination.latitude == 0 else {
-			Debug.log(ident: "No need to geocode", data: "")
 			return
 		}
 		

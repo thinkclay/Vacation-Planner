@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 			appState.isUser = UserDefaults.standard.bool(forKey: Constants.UserDefaults.isUser)
 			appState.isAuthenticated = UserDefaults.standard.bool(forKey: Constants.UserDefaults.vocSessionToken)
 						
-			window.rootViewController = UIHostingController(rootView: RootView(appState: appState))
+			window.rootViewController = UIHostingController(rootView: RootView())
 			self.window = window
 			window.makeKeyAndVisible()
 		}

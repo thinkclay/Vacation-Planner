@@ -151,8 +151,10 @@ struct FSQLocation: Codable {
 	let labeledLatLngs: [FSQLabeledLatLng]
 	let distance: Int
 	let postalCode: String?
-	let cc, city, state: String
-	let country: String
+	let cc: String?
+	let city: String?
+	let state: String?
+	let country: String?
 	let formattedAddress: [String]
 }
 

@@ -19,7 +19,6 @@ class FoursquareController: ObservableObject {
 			
 			do {
 				let resource = try JSONDecoder().decode(FSQRootResponse.self, from: data)
-				Debug.log(ident: "Resource", data: resource.response.groups[0].items)
 				self.venues = resource.response.groups[0].items
 			}
 			catch {

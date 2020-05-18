@@ -55,3 +55,42 @@ struct NeueAsyncImage<Placeholder: View>: View {
 		}
 	}
 }
+
+public extension UIImage {
+	func tint(with fillColor: UIColor) -> UIImage? {
+		let image = withRenderingMode(.alwaysTemplate)
+		UIGraphicsBeginImageContextWithOptions(size, false, scale)
+		fillColor.set()
+		image.draw(in: CGRect(origin: .zero, size: size))
+		
+		guard let imageColored = UIGraphicsGetImageFromCurrentImageContext() else {
+			return nil
+		}
+		
+		UIGraphicsEndImageContext()
+		return imageColored
+	}
+}
+
+//extension UIImage {
+//	
+//	func maskWithColor(color: UIColor) -> UIImage {
+//		let maskImage = cgImage!
+//		
+//		let width = size.width
+//		let height = size.height
+//		let bounds = CGRect(x: 0, y: 0, width: width, height: height)
+//		
+//		let colorSpace = CGColorSpaceCreateDeviceRGB()
+//		let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedLast.rawValue)
+//		let context = CGContext(data: nil, width: Int(width), height: Int(height), bitsPerComponent: 8, bytesPerRow: 0, space: colorSpace, bitmapInfo: bitmapInfo.rawValue)!
+//		
+//		context.clip(to: bounds, mask: maskImage)
+//		context.setFillColor(color.cgColor)
+//		context.fill(bounds)
+//		
+//		let cgImage = context.makeImage()!
+//		return UIImage(cgImage: cgImage)
+//	}
+//	
+//}

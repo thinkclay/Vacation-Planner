@@ -20,16 +20,14 @@ struct StateView: View {
 			
 			ScrollView {
 				ForEach(Countries.US.states.map { $0.key }.sorted(), id: \.self) { state in
-					VStack(alignment: .leading) {
-						StateCardView(
-							stateLabel: Countries.US.states[state] ?? "",
-							stateCode: state
-						)
-					}
+					StateCardView(
+						stateLabel: Countries.US.states[state] ?? "",
+						stateCode: state
+					)
 				}
 			}
 			.frame(minWidth: 0, maxWidth: .infinity)
-			.navigationBarTitle(Text("\(destinations.total) destinations"), displayMode: .inline)
+			.navigationBarTitle("\(destinations.total) destinations", displayMode: .inline)
 		}
 		
 	}
