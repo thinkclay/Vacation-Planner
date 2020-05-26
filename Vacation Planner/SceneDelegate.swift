@@ -18,9 +18,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 		// Use a UIHostingController as window root view controller.
 		if let windowScene = scene as? UIWindowScene {
 			let window = UIWindow(windowScene: windowScene)
-			let appState = AppState()
-			appState.isUser = UserDefaults.standard.bool(forKey: Constants.UserDefaults.isUser)
-			appState.isAuthenticated = UserDefaults.standard.bool(forKey: Constants.UserDefaults.vocSessionToken)
 						
 			window.rootViewController = UIHostingController(rootView: RootView())
 			self.window = window

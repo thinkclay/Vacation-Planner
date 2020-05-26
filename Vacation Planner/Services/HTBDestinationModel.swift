@@ -12,24 +12,27 @@ struct HTBZone: Codable {
 	}
 }
 
+struct HTBName: Codable {
+	let content: String
+}
+
 @objcMembers
 class HTBDestination: Object, Codable, Identifiable {
 	dynamic var code: String
-	dynamic var countryCode, isoCode: String
 	dynamic var title: String = ""
+	dynamic var countryCode, isoCode: String
 	dynamic var address: String = ""
 	dynamic var latitude: Double = 0.0
 	dynamic var longitude: Double = 0.0
 	dynamic var state: String = ""
 	dynamic var zones = ""
 	
-	let rawName: HTBName
+	let name: HTBName
 	let rawZones: [HTBZone]
 	let groupZones: [JSONAny]
 	
 	enum CodingKeys: String, CodingKey {
-		case code, countryCode, isoCode, groupZones
-		case rawName = "name"
+		case code, countryCode, isoCode, groupZones, name
 		case rawZones = "zones"
 	}
 	

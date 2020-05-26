@@ -72,7 +72,7 @@ class DestinationController: ObservableObject {
 			DispatchQueue(label: "app.controllers.destinations.fetch").async {
 				var destinations: [HTBDestination] = []
 				for destination in resource.destinations {
-					destination.title = destination.rawName.content
+					destination.title = destination.name.content
 					destination.zones = destination.rawZones.map { $0.name }.joined(separator: ",")
 					
 					if destination.countryCode == "US" {

@@ -19,13 +19,14 @@ class AppState: ObservableObject {
 		}
 	}
 	
-	var isUser: Bool = false {
+	var isUser: Bool = UserDefaults.standard.bool(forKey: Constants.UserDefaults.isUser) {
 		didSet {
+			UserDefaults.standard.set(isUser, forKey: Constants.UserDefaults.isUser)
 			objectWillChange.send(self)
 		}
 	}
 	
-	var isAuthenticated: Bool = false {
+	var isAuthenticated: Bool = UserDefaults.standard.bool(forKey: Constants.UserDefaults.vocSessionToken) {
 		didSet {
 			objectWillChange.send(self)
 		}

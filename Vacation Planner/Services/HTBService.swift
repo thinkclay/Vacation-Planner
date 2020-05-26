@@ -30,9 +30,41 @@ struct HTBService {
 		baseHeaders["X-Signature"] = token
 	}
 	
+	//	MARK: - getCountries()
+	public func getCountries(params: [String: Any] = [:], handler: @escaping (Data?, URLResponse?, Error?) -> Void) {
+		let url = "\(baseUrl)/hotel-content-api/1.0/locations/countries"
+		var parameters: [String: Any] = [
+			"fields": "all",
+			"countryCodes": "US",
+			"language": "ENG",
+			"from": 1,
+			"to": 5,
+			"useSecondaryLanguage": false
+		]
+		parameters.merge(params) { (_, new) in new }
+		
+		APIHelper.buildRequest(url: url, params: parameters, headers: baseHeaders, handler: handler)
+	}
+	
 	//	MARK: - getDestinations()
 	public func getDestinations(params: [String: Any] = [:], handler: @escaping (Data?, URLResponse?, Error?) -> Void) {
 		let url = "\(baseUrl)/hotel-content-api/1.0/locations/destinations"
+		var parameters: [String: Any] = [
+			"fields": "all",
+			"countryCodes": "US",
+			"language": "ENG",
+			"from": 1,
+			"to": 5,
+			"useSecondaryLanguage": false
+		]
+		parameters.merge(params) { (_, new) in new }
+		
+		APIHelper.buildRequest(url: url, params: parameters, headers: baseHeaders, handler: handler)
+	}
+	
+	//	MARK: - getHotels()
+	public func getHotels(params: [String: Any] = [:], handler: @escaping (Data?, URLResponse?, Error?) -> Void) {
+		let url = "\(baseUrl)/hotel-content-api/1.0/hotels"
 		var parameters: [String: Any] = [
 			"fields": "all",
 			"countryCodes": "US",
