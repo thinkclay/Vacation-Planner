@@ -96,15 +96,12 @@
 		6FB4A81D246B2D0C00C81361 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB4A81C246B2D0C00C81361 /* RootView.swift */; };
 		6FB4A81E246B2D0C00C81361 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB4A81C246B2D0C00C81361 /* RootView.swift */; };
 		6FB4A81F246B2D0C00C81361 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB4A81C246B2D0C00C81361 /* RootView.swift */; };
-		6FB4A821246B548600C81361 /* VOCService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB4A820246B548600C81361 /* VOCService.swift */; };
-		6FB4A822246B548600C81361 /* VOCService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB4A820246B548600C81361 /* VOCService.swift */; };
-		6FB4A823246B548600C81361 /* VOCService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB4A820246B548600C81361 /* VOCService.swift */; };
+		6FB4A821246B548600C81361 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB4A820246B548600C81361 /* AuthService.swift */; };
+		6FB4A822246B548600C81361 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB4A820246B548600C81361 /* AuthService.swift */; };
+		6FB4A823246B548600C81361 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB4A820246B548600C81361 /* AuthService.swift */; };
 		6FB4A82E246B6A5B00C81361 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB4A82D246B6A5B00C81361 /* AppModel.swift */; };
 		6FB4A82F246B6A5B00C81361 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB4A82D246B6A5B00C81361 /* AppModel.swift */; };
 		6FB4A830246B6A5B00C81361 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB4A82D246B6A5B00C81361 /* AppModel.swift */; };
-		6FB4A832246B6E0D00C81361 /* VOCAuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB4A831246B6E0D00C81361 /* VOCAuthModel.swift */; };
-		6FB4A833246B6E0D00C81361 /* VOCAuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB4A831246B6E0D00C81361 /* VOCAuthModel.swift */; };
-		6FB4A834246B6E0D00C81361 /* VOCAuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB4A831246B6E0D00C81361 /* VOCAuthModel.swift */; };
 		6FB4A83A246B735F00C81361 /* DebugModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB4A839246B735F00C81361 /* DebugModel.swift */; };
 		6FB4A83B246B735F00C81361 /* DebugModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB4A839246B735F00C81361 /* DebugModel.swift */; };
 		6FB4A83C246B735F00C81361 /* DebugModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB4A839246B735F00C81361 /* DebugModel.swift */; };
@@ -187,9 +184,8 @@
 		6FB4A80F246AFDC700C81361 /* AuthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModel.swift; sourceTree = "<group>"; };
 		6FB4A813246AFF2800C81361 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		6FB4A81C246B2D0C00C81361 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
-		6FB4A820246B548600C81361 /* VOCService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VOCService.swift; sourceTree = "<group>"; };
+		6FB4A820246B548600C81361 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		6FB4A82D246B6A5B00C81361 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
-		6FB4A831246B6E0D00C81361 /* VOCAuthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VOCAuthModel.swift; sourceTree = "<group>"; };
 		6FB4A839246B735F00C81361 /* DebugModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugModel.swift; sourceTree = "<group>"; };
 		6FBE3A9C246FA3BF000DFF2C /* DestinationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationDetailView.swift; sourceTree = "<group>"; };
 		6FBE3AA0246FA8D3000DFF2C /* DestinationMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationMapView.swift; sourceTree = "<group>"; };
@@ -270,8 +266,7 @@
 				6F1E7FFE246BCEAE00E1780E /* HTBDestinationModel.swift */,
 				6F8BB946247CBE7100B1E4B8 /* HTBHotelModel.swift */,
 				6F1E7FF0246BB52300E1780E /* HTBService.swift */,
-				6FB4A831246B6E0D00C81361 /* VOCAuthModel.swift */,
-				6FB4A820246B548600C81361 /* VOCService.swift */,
+				6FB4A820246B548600C81361 /* AuthService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -630,14 +625,13 @@
 				6F7BDB2C2467B33B00254AD7 /* OnboardingView.swift in Sources */,
 				6F1E7FFB246BCE3C00E1780E /* HTBAuditModel.swift in Sources */,
 				6F79CB35246965F900CCD2A7 /* SlideModel.swift in Sources */,
-				6FB4A832246B6E0D00C81361 /* VOCAuthModel.swift in Sources */,
 				6F79CB4A2469860900CCD2A7 /* NeueTextInput.swift in Sources */,
 				6FB4A83A246B735F00C81361 /* DebugModel.swift in Sources */,
 				6F1E7FF1246BB52300E1780E /* HTBService.swift in Sources */,
 				6FBE3AA9246FD28E000DFF2C /* FSQService.swift in Sources */,
 				6FB4A82E246B6A5B00C81361 /* AppModel.swift in Sources */,
 				6F79CB392469785100CCD2A7 /* AuthView.swift in Sources */,
-				6FB4A821246B548600C81361 /* VOCService.swift in Sources */,
+				6FB4A821246B548600C81361 /* AuthService.swift in Sources */,
 				6FD0A647245F13250014E3C1 /* SceneDelegate.swift in Sources */,
 				6FB4A814246AFF2800C81361 /* Constants.swift in Sources */,
 				6F8BB947247CBE7100B1E4B8 /* HTBHotelModel.swift in Sources */,
@@ -663,7 +657,6 @@
 				6F5D79F8246F7BA100338E75 /* NeueBlur.swift in Sources */,
 				6FBE3A9E246FA3BF000DFF2C /* DestinationDetailView.swift in Sources */,
 				6FB4A83B246B735F00C81361 /* DebugModel.swift in Sources */,
-				6FB4A833246B6E0D00C81361 /* VOCAuthModel.swift in Sources */,
 				6F79CB36246965F900CCD2A7 /* SlideModel.swift in Sources */,
 				6F04784E246CA5A7008BAE7B /* CountriesModel.swift in Sources */,
 				6F9397AA2461A33F00E20F76 /* DestinationController.swift in Sources */,
@@ -676,7 +669,7 @@
 				6F79CB462469806200CCD2A7 /* NeueStyles.swift in Sources */,
 				6F7BDB2D2467B33B00254AD7 /* OnboardingView.swift in Sources */,
 				6F79CB3A2469785100CCD2A7 /* AuthView.swift in Sources */,
-				6FB4A822246B548600C81361 /* VOCService.swift in Sources */,
+				6FB4A822246B548600C81361 /* AuthService.swift in Sources */,
 				6F5D79F0246F53A100338E75 /* NeueImage.swift in Sources */,
 				6F1E7FFC246BCE3C00E1780E /* HTBAuditModel.swift in Sources */,
 				6F79CB1C2467BBCC00CCD2A7 /* NeueLottieView.swift in Sources */,
@@ -705,7 +698,6 @@
 				6F5D79F9246F7BA100338E75 /* NeueBlur.swift in Sources */,
 				6FBE3A9F246FA3BF000DFF2C /* DestinationDetailView.swift in Sources */,
 				6FB4A83C246B735F00C81361 /* DebugModel.swift in Sources */,
-				6FB4A834246B6E0D00C81361 /* VOCAuthModel.swift in Sources */,
 				6F79CB37246965F900CCD2A7 /* SlideModel.swift in Sources */,
 				6F04784F246CA5A7008BAE7B /* CountriesModel.swift in Sources */,
 				6F9397AB2461A33F00E20F76 /* DestinationController.swift in Sources */,
@@ -718,7 +710,7 @@
 				6F79CB472469806200CCD2A7 /* NeueStyles.swift in Sources */,
 				6F7BDB2E2467B33B00254AD7 /* OnboardingView.swift in Sources */,
 				6F79CB3B2469785100CCD2A7 /* AuthView.swift in Sources */,
-				6FB4A823246B548600C81361 /* VOCService.swift in Sources */,
+				6FB4A823246B548600C81361 /* AuthService.swift in Sources */,
 				6F5D79F1246F53A100338E75 /* NeueImage.swift in Sources */,
 				6F1E7FFD246BCE3C00E1780E /* HTBAuditModel.swift in Sources */,
 				6F79CB1D2467BBCC00CCD2A7 /* NeueLottieView.swift in Sources */,

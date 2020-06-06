@@ -2,7 +2,7 @@ import SwiftUI
 
 struct AuthView: View {
 	@ObservedObject var appState: AppState
-	@State var authResponse: VOCAuthResponse?
+	@State var authResponse: AuthResponse?
 	@State var username: String = "clay@unicornagency.com"
 	@State var password: String = "9Fw2SXnUfePiEFQ"
 	
@@ -39,9 +39,9 @@ struct AuthView: View {
 	}
 	
 	func submitHandler() {
-		VOCService.shared.login(email: username, password: password) { data, response, error in
+		AuthService.shared.login(email: username, password: password) { data, response, error in
 			if let data = data {
-				if let response = try? JSONDecoder().decode(VOCAuthResponse.self, from: data) {					
+				if let response = try? JSONDecoder().decode(AuthResponse.self, from: data) {
 					// we have good data – go back to the main thread
 					DispatchQueue.main.async {
 						if response.data != nil {

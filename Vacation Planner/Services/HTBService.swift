@@ -8,8 +8,8 @@ struct HTBService {
 	
 	public static var shared = HTBService(mode: .development)
 	
-	private let key: String = "zjpwfn7pbeufupd7ub2eme97"
-	private let secret: String = "J6n8vzyXuS"
+	private let key: String = "x5z8jypzw39uhz45z4z5ht99"
+	private let secret: String = "Jdn6xje9wt"
 	private var token: String?
 	private var baseUrl: String
 	private var baseHeaders: [String: String] = [:]
